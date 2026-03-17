@@ -42,4 +42,86 @@ document.addEventListener('DOMContentLoaded', () => {
             header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
         }
     });
+
+    // Modal Logic
+    const modal = document.getElementById('enquireModal');
+    const openBtn = document.getElementById('openEnquireModal');
+    const closeBtn = document.querySelector('.close-btn');
+    const dobInput = document.getElementById('dob');
+    const ageInput = document.getElementById('age');
+    const enquireForm = document.getElementById('enquireForm');
+
+    if (openBtn && modal) {
+        openBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.style.display = 'flex';
+            // slight delay to allow display block to apply before transition
+            setTimeout(() => modal.classList.add('show'), 10);
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('show');
+            setTimeout(() => modal.style.display = 'none', 300);
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+                setTimeout(() => modal.style.display = 'none', 300);
+            }
+        });
+
+        // Open automatically on page load after 1.5s
+        setTimeout(() => {
+            if (!modal.classList.contains('show')) {
+                modal.style.display = 'flex';
+                setTimeout(() => modal.classList.add('show'), 10);
+            }
+        }, 1500);
+    }
+
+    if (dobInput && ageInput) {
+        dobInput.addEventListener('change', () => {
+            const dobDate = new Date(dobInput.value);
+            // Target date: 31 July 2026
+            const targetDate = new Date('2026-07-31');
+
+            if (!isNaN(dobDate.getTime())) {
+                let years = targetDate.getFullYear() - dobDate.getFullYear();
+                let months = targetDate.getMonth() - dobDate.getMonth();
+                let days = targetDate.getDate() - dobDate.getDate();
+
+                if (days < 0) {
+                    months--;
+                    const prevMonth = new Date(targetDate.getFullYear(), targetDate.getMonth(), 0);
+                    days += prevMonth.getDate();
+                }
+
+                if (months < 0) {
+                    years--;
+                    months += 12;
+                }
+                
+                if (years < 0 || (years === 0 && months === 0 && days < 0)) {
+                    ageInput.value = 'Not born yet as of target date';
+                } else {
+                    let ageStr = `${years} Years, ${months} Months`;
+                    ageInput.value = ageStr;
+                }
+            } else {
+                ageInput.value = '';
+            }
+        });
+    }
+
+    if (enquireForm) {
+        enquireForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your enquiry! We will get back to you soon.');
+            enquireForm.reset();
+            modal.classList.remove('show');
+            setTimeout(() => modal.style.display = 'none', 300);
+            ageInput.value = '';
+        });
+    }
 });

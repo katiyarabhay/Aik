@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,18 +11,28 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
 
     <header>
         <div class="container header-container">
             <div class="logo">
-                <h1>Aikyam <span class="highlight">Ananda School</span></h1>
+                <h1> <span class="highlight">Aikyam Ananda School</span></h1>
             </div>
             <nav>
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#faculty">Faculty</a></li>
+                    <li class="dropdown">
+                        <a href="#about">About Us</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#founders-message">Founder's Message</a></li>
+                            <li><a href="#our-vision">Our Vision</a></li>
+                            <li><a href="#learning-philosophy">Learning Philosophy</a></li>
+                            <li><a href="#our-teachers">Our Teachers</a></li>
+                            <li><a href="#gallery">Gallery</a></li>
+                        </ul>
+                    </li>
+                    <!-- <li><a href="#faculty">Faculty</a></li> -->
                     <li><a href="#events">Events</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -35,12 +46,12 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>
-  
-  <span class="school-name">Welcome to Aikyam Ananda Pre-School</span>
-</h1>
 
-            <p>Nurturing young minds with love, creativity, and joy.</p>
-            <a href="#contact" class="btn-primary">Enroll Now</a>
+                <span class="school-name"><span class="welcome-text">Welcome to <br>Aikyam Ananda School</span>
+            </h1>
+
+            <p>UNITED WE GROW</p>
+            <a href="#" class="btn-primary" id="openEnquireModal">Enquire Now</a>
         </div>
     </section>
 
@@ -51,17 +62,20 @@
                 <div class="about-card">
                     <i class="fas fa-seedling icon"></i>
                     <h3>Origin</h3>
-                    <p>Founded with a vision to create a harmonious learning environment where every child feels valued and connected.</p>
+                    <p>Founded with a vision to create a harmonious learning environment where every child feels valued
+                        and connected.</p>
                 </div>
                 <div class="about-card">
                     <i class="fas fa-landmark icon"></i>
                     <h3>Foundation</h3>
-                    <p>Built on the pillars of integrity, curiosity, and compassion. We believe in holistic development from the very start.</p>
+                    <p>Built on the pillars of integrity, curiosity, and compassion. We believe in holistic development
+                        from the very start.</p>
                 </div>
                 <div class="about-card">
                     <i class="fas fa-history icon"></i>
                     <h3>Background</h3>
-                    <p>Aikyam Ananda is a recently established institution, bringing modern pedagogical methods blended with traditional values.</p>
+                    <p>Aikyam Ananda is a recently established institution, bringing modern pedagogical methods blended
+                        with traditional values.</p>
                 </div>
             </div>
         </div>
@@ -133,8 +147,10 @@
                 <h2>Aikyam Ananda School</h2>
                 <p>Connect with us to give your child the best start.</p>
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/people/Aikyam-Ananda-Pre-School/100090536709908/?mibextid=ZbWKwL&utm_source=ig&utm_medium=social&utm_content=link_in_bio" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://instagram.com/aikyamanandapreschool" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/people/Aikyam-Ananda-Pre-School/100090536709908/?mibextid=ZbWKwL&utm_source=ig&utm_medium=social&utm_content=link_in_bio"
+                        class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/aikyamanandapreschool" class="social-icon"><i
+                            class="fab fa-instagram"></i></a>
                     <a href="https://wa.me/917303541117" class="social-icon"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
@@ -143,12 +159,15 @@
                 <ul>
                     <li><i class="fas fa-phone-alt"></i> +91 730 354 1117</li>
                     <li><i class="fas fa-envelope"></i>aikyamanandapreschool@gmail.com</li>
-                    <li><i class="fas fa-map-marker-alt"></i> 9/18 Ambedkarpuram,Awas Vikas -3, Kalyanpur, Kanpur 208017 </li>
+                    <li><i class="fas fa-map-marker-alt"></i> 9/18 Ambedkarpuram,Awas Vikas -3, Kalyanpur, Kanpur 208017
+                    </li>
                 </ul>
             </div>
             <div class="footer-map">
                 <!-- Google Maps Placeholder -->
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3571.1099443939984!2d80.23795477459687!3d26.484404678367216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399c37dc68deaa77%3A0x619318978942b493!2sAikyam%20Ananda%20School!5e0!3m2!1sen!2sin!4v1764760078226!5m2!1sen!2sin">" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3571.1099443939984!2d80.23795477459687!3d26.484404678367216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399c37dc68deaa77%3A0x619318978942b493!2sAikyam%20Ananda%20School!5e0!3m2!1sen!2sin!4v1764760078226!5m2!1sen!2sin">"
+                    width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
         <div class="footer-bottom">
@@ -156,6 +175,62 @@
         </div>
     </section>
 
+    <!-- Enquire Modal -->
+    <div id="enquireModal" class="modal">
+        <div class="modal-content large-modal">
+            <span class="close-btn">&times;</span>
+            <h2>Reach Out to Us - Admission 26-27</h2>
+            <form id="enquireForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="parentName">Parent Name <span class="required">*</span></label>
+                        <input type="text" id="parentName" placeholder="Parent Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="childName">Child Name <span class="required">*</span></label>
+                        <input type="text" id="childName" placeholder="Child Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Child Date of Birth <span class="required">*</span></label>
+                        <input type="date" id="dob" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Child Age as of 31st July, 2026 <span class="required">*</span></label>
+                        <input type="text" id="age" placeholder="Child Age as of 31st July, 2026" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="residence">Area of Residence <span class="required">*</span></label>
+                        <input type="text" id="residence" placeholder="Area of Residence" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactNo">Phone Number <span class="required">*</span></label>
+                        <input type="tel" id="contactNo" placeholder="Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail <span class="required">*</span></label>
+                        <input type="email" id="email" placeholder="E-mail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reason">Reason for enquiry (admissions, timings, etc.) <span class="required">*</span></label>
+                        <input type="text" id="reason" placeholder="Reason for enquiry (admissions, timings, etc.)" required>
+                    </div>
+                </div>
+                
+                <div class="form-checkbox">
+                    <input type="checkbox" id="openHouse">
+                    <label for="openHouse">I would like to visit the school campus for an Open House</label>
+                </div>
+                <div class="form-checkbox" style="margin-bottom: 20px;">
+                    <input type="checkbox" id="agreeData" required>
+                    <label for="agreeData">I agree to the processing of personal data</label>
+                </div>
+                
+                <button type="submit" class="btn-submit">Submit Enquiry</button>
+            </form>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
+
 </html>

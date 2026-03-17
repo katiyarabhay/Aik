@@ -40,18 +40,33 @@ ul {
 
 /* Header */
 header {
-    background-color: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    background-color: #ffeb3b;
+    /* vibrant yellow back */
     position: sticky;
     top: 0;
     z-index: 1000;
-    padding: 1rem 0;
+    padding: 0;
+    /* Remove padding to let container handle it */
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0L1200,0L1200,105 Q1050,120 900,105 T600,105 T300,105 T0,105 Z' fill='%23000'/%3E%3C/svg%3E");
+    -webkit-mask-size: 100% 100%;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0L1200,0L1200,105 Q1050,120 900,105 T600,105 T300,105 T0,105 Z' fill='%23000'/%3E%3C/svg%3E");
+    mask-size: 100% 100%;
 }
+
+/* Wavy bottom effect for header container now disabled to show full pencils */
 
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-image: url('Yellow_Back_to_School_Facebook_Post__2_-removebg-preview.png');
+    background-size: 100% 100%;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    padding: 1rem 20px;
+    /* Removed the extra 3rem bottom padding */
+    height: 120px;
+    /* Set a specific height to maintain aspect reasonably well for the pencils */
 }
 
 .logo h1 {
@@ -61,7 +76,7 @@ header {
 }
 
 .logo .highlight {
-    color: var(--neon-blue);
+    color: #00BFFF;
     text-shadow: 0 0 5px rgba(77, 77, 255, 0.4);
 }
 
@@ -95,6 +110,70 @@ header {
 
 .nav-links li a:hover {
     color: var(--neon-blue);
+}
+
+/* Dropdown Menu Styles */
+.nav-links .dropdown {
+    position: relative;
+}
+
+.nav-links .dropdown-icon {
+    font-size: 0.8rem;
+    margin-left: 4px;
+    vertical-align: middle;
+}
+
+.nav-links .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    min-width: 200px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 100;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.nav-links .dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.nav-links .dropdown-menu li {
+    width: 100%;
+}
+
+.nav-links .dropdown-menu li a {
+    display: block;
+    padding: 10px 20px;
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.nav-links .dropdown-menu li:last-child a {
+    border-bottom: none;
+}
+
+.nav-links .dropdown-menu li a::after {
+    display: none;
+    /* remove the underline effect from parent */
+}
+
+.nav-links .dropdown-menu li a:hover {
+    color: var(--neon-blue);
+    background-color: #f9f9f9;
 }
 
 .hamburger {
@@ -131,6 +210,10 @@ header {
     animation: fadeInTitle 2s ease-out forwards;
     color: var(--neon-blue);
     font-size: larger;
+}
+
+.welcome-text {
+    color: #ffffff;
 }
 
 /* keyframes for fade-in on page load */
@@ -177,24 +260,36 @@ header {
 .hero p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
-    color: #555;
+    color: #ffeb3b;
+    /* vibrant yellow */
+    font-weight: 700;
 }
 
 .btn-primary {
     display: inline-block;
-    padding: 12px 30px;
-    background-color: var(--neon-green);
-    color: #000;
+    padding: 16px 36px;
+    background-color: #00BFFF;
+    /* Bright Candy Floss Blue */
+    color: #fff;
     font-weight: 700;
-    border-radius: 30px;
-    box-shadow: 0 4px 15px rgba(57, 255, 20, 0.4);
+    font-size: 1.1rem;
+    position: relative;
+    /* Subtle rounded edges overall instead of a perfect pill to match wavy edge */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 191, 255, 0.4);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    /* Apply wavy cutouts to the button itself */
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60' preserveAspectRatio='none'%3E%3Cpath d='M 0 5 C 10 10, 20 0, 30 5 S 50 0, 60 5 S 80 0, 90 5 S 110 0, 120 5 S 140 0, 150 5 S 170 0, 180 5 S 190 10, 200 5 L 200 55 C 190 60, 180 50, 170 55 S 150 50, 140 55 S 120 50, 110 55 S 90 50, 80 55 S 60 50, 50 55 S 30 50, 20 55 S 10 60, 0 55 Z' fill='black'/%3E%3C/svg%3E");
+    -webkit-mask-size: 100% 100%;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60' preserveAspectRatio='none'%3E%3Cpath d='M 0 5 C 10 10, 20 0, 30 5 S 50 0, 60 5 S 80 0, 90 5 S 110 0, 120 5 S 140 0, 150 5 S 170 0, 180 5 S 190 10, 200 5 L 200 55 C 190 60, 180 50, 170 55 S 150 50, 140 55 S 120 50, 110 55 S 90 50, 80 55 S 60 50, 50 55 S 30 50, 20 55 S 10 60, 0 55 Z' fill='black'/%3E%3C/svg%3E");
+    mask-size: 100% 100%;
 }
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(57, 255, 20, 0.6);
-    background-color: #32e012;
+    box-shadow: 0 6px 20px rgba(0, 191, 255, 0.6);
+    background-color: #009acd;
 }
 
 /* Sections */
@@ -542,5 +637,178 @@ header {
 
     .section-title {
         font-size: 1.75rem;
+    }
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    position: relative;
+    transform: translateY(-50px);
+    transition: transform 0.3s ease;
+}
+
+.modal.show .modal-content {
+    transform: translateY(0);
+}
+
+.close-btn {
+    color: #aaa;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: var(--neon-blue);
+    text-decoration: none;
+}
+
+.modal-content.large-modal {
+    max-width: 800px;
+    width: 95%;
+    padding: 40px;
+}
+
+.modal-content h2 {
+    margin-bottom: 25px;
+    text-align: left;
+    color: #000;
+    font-size: 1.8rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px 20px;
+}
+
+.form-group {
+    margin-bottom: 5px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.form-group .required {
+    color: red;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: border-color 0.3s ease;
+    background-color: #fff;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #bbb;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 5px rgba(77, 77, 255, 0.2);
+}
+
+.form-group input[readonly] {
+    background-color: #f9f9f9;
+    cursor: default;
+    color: #666;
+}
+
+.form-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.form-checkbox input {
+    margin-top: 4px;
+    cursor: pointer;
+}
+
+.form-checkbox label {
+    font-size: 0.9rem;
+    color: #444;
+    cursor: pointer;
+}
+
+.btn-submit {
+    width: 200px;
+    padding: 12px;
+    background-color: var(--neon-blue);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(77, 77, 255, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    display: block;
+    margin: 20px auto 0;
+}
+
+.btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(77, 77, 255, 0.5);
+    background-color: #3a3ae6;
+}
+
+@media (max-width: 600px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content.large-modal {
+        padding: 20px;
     }
 }
