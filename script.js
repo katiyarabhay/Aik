@@ -16,6 +16,7 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 document.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('js-loaded');
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     const links = document.querySelectorAll('.nav-links li a');
