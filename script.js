@@ -1,3 +1,20 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyBjcMCJj12mUufAGy2ME5pXOfLIcdq_E_A",
+    authDomain: "aikyam-ananda.firebaseapp.com",
+    projectId: "aikyam-ananda",
+    storageBucket: "aikyam-ananda.firebasestorage.app",
+    messagingSenderId: "6461778063",
+    appId: "1:6461778063:web:83a531d5ab034cb1d728fa",
+    measurementId: "G-DRWZE8LMN8",
+    databaseURL: "https://aikyam-ananda-default-rtdb.firebaseio.com/"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
 document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
@@ -23,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
+
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 targetElement.scrollIntoView({
@@ -109,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     years--;
                     months += 12;
                 }
-                
+
                 if (years < 0 || (years === 0 && months === 0 && days < 0)) {
                     ageInput.value = 'Not born yet as of target date';
                 } else {
@@ -123,13 +140,50 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (enquireForm) {
-        enquireForm.addEventListener('submit', (e) => {
+        enquireForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            alert('Thank you for your enquiry! We will get back to you soon.');
-            enquireForm.reset();
-            modal.classList.remove('show');
-            setTimeout(() => modal.style.display = 'none', 300);
-            ageInput.value = '';
+
+            const parentName = document.getElementById('parentName').value;
+            const childName = document.getElementById('childName').value;
+            const dob = document.getElementById('dob').value;
+            const ageAsOfTargetDate = ageInput.value;
+            const residence = document.getElementById('residence').value;
+            const contactNo = document.getElementById('contactNo').value;
+            const email = document.getElementById('email').value;
+            const reason = document.getElementById('reason').value;
+            const openHouse = document.getElementById('openHouse').checked;
+
+            const submitBtn = enquireForm.querySelector('.btn-submit');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+
+            try {
+                await push(ref(db, "enquiries"), {
+                    parentName,
+                    childName,
+                    dob,
+                    ageAsOfTargetDate,
+                    residence,
+                    contactNo,
+                    email,
+                    reason,
+                    openHouse,
+                    timestamp: new Date().toISOString()
+                });
+
+                alert('Thank you for your enquiry! We will get back to you soon.');
+                enquireForm.reset();
+                modal.classList.remove('show');
+                setTimeout(() => modal.style.display = 'none', 300);
+                ageInput.value = '';
+            } catch (error) {
+                console.error("Error adding document: ", error);
+                alert("There was an error submitting your enquiry. Please try again.");
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
         });
     }
 
