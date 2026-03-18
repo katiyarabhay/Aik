@@ -687,7 +687,6 @@ header::before {
 .social-icon {
     width: 40px;
     height: 40px;
-    background-color: #333;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -697,9 +696,31 @@ header::before {
 }
 
 .social-icon:hover {
-    background-color: var(--neon-blue);
-    box-shadow: 0 0 10px var(--neon-blue);
     transform: translateY(-3px);
+}
+
+.social-icon.facebook {
+    background-color: #1877F2;
+}
+
+.social-icon.facebook:hover {
+    box-shadow: 0 0 10px #1877F2;
+}
+
+.social-icon.instagram {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+.social-icon.instagram:hover {
+    box-shadow: 0 0 10px #dc2743;
+}
+
+.social-icon.whatsapp {
+    background-color: #25D366;
+}
+
+.social-icon.whatsapp:hover {
+    box-shadow: 0 0 10px #25D366;
 }
 
 .footer-contact h3 {
