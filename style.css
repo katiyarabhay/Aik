@@ -1,6 +1,6 @@
 :root {
     --primary-bg: #00BFFF;
-    --secondary-bg: #f4f4f4;
+    --secondary-bg: #00BFFF;
     --text-color: #333333;
     --neon-green: #39FF14;
     --neon-blue: #4D4DFF;
@@ -638,7 +638,7 @@ header::before {
 }
 
 .achievement-box {
-    background: linear-gradient(135deg, #39FF14 0%, #2ecc71 100%);
+    background: linear-gradient(135deg, #ffeb3b 0%, #ccbf2e 100%);
     padding: 2rem;
     border-radius: 10px;
     color: #000;
@@ -655,9 +655,14 @@ header::before {
 
 /* Footer */
 .footer-section {
-    background-color: #222;
-    color: #fff;
+    background-color: #ffeb3b;
+    color: #222;
     padding-bottom: 2rem;
+    padding-top: 4rem;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,5 Q150,0 300,5 T600,5 T900,5 T1200,5 L1200,120 L0,120 Z' fill='%23000'/%3E%3C/svg%3E");
+    -webkit-mask-size: 100% 100%;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,5 Q150,0 300,5 T600,5 T900,5 T1200,5 L1200,120 L0,120 Z' fill='%23000'/%3E%3C/svg%3E");
+    mask-size: 100% 100%;
 }
 
 .footer-grid {
@@ -668,7 +673,8 @@ header::before {
 }
 
 .footer-info h2 {
-    color: var(--neon-green);
+    color: #00BFFF;
+    font-size: 2.2rem;
     margin-bottom: 1rem;
 }
 
@@ -697,7 +703,8 @@ header::before {
 }
 
 .footer-contact h3 {
-    color: var(--neon-blue);
+    color: #00BFFF;
+    font-size: 2rem;
     margin-bottom: 1.5rem;
 }
 
@@ -717,8 +724,8 @@ header::before {
     text-align: center;
     padding-top: 2rem;
     border-top: 1px solid #444;
-    color: #888;
-    font-size: 0.9rem;
+    color: #00BFFF;
+    font-size: 1.2rem;
 }
 
 /* Responsive */
