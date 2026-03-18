@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const dobInput = document.getElementById('dob');
     const ageInput = document.getElementById('age');
     const enquireForm = document.getElementById('enquireForm');
+    const admissionBanner = document.getElementById('admission-banner');
 
     if (openBtn && modal) {
         openBtn.addEventListener('click', (e) => {
@@ -58,6 +59,13 @@ document.addEventListener('DOMContentLoaded', () => {
             // slight delay to allow display block to apply before transition
             setTimeout(() => modal.classList.add('show'), 10);
         });
+
+        if (admissionBanner) {
+            admissionBanner.addEventListener('click', () => {
+                modal.style.display = 'flex';
+                setTimeout(() => modal.classList.add('show'), 10);
+            });
+        }
 
         closeBtn.addEventListener('click', () => {
             modal.classList.remove('show');
@@ -132,11 +140,12 @@ document.addEventListener('DOMContentLoaded', () => {
         threshold: 0.1
     };
 
-    const observer = new IntersectionObserver((entries, observer) => {
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate');
-                observer.unobserve(entry.target); // Optional: only animate once
+            } else {
+                entry.target.classList.remove('animate');
             }
         });
     }, observerOptions);
