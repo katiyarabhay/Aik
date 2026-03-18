@@ -307,6 +307,105 @@ header::before {
     background-color: var(--secondary-bg);
 }
 
+/* Wavy Separators */
+.wave-top svg, .wave-bottom svg {
+    display: block;
+}
+
+/* Holistic Development Cards */
+.holistic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+    padding-bottom: 3rem;
+    position: relative;
+    z-index: 2;
+}
+
+.holistic-card {
+    padding: 2.5rem 1.5rem;
+    border-radius: 40px 10px 40px 10px; /* Candy Floss style irregular blob borders */
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, border-radius 0.3s ease;
+}
+
+.holistic-card:hover {
+    transform: translateY(-8px);
+    border-radius: 10px 40px 10px 40px; /* playful shift on hover */
+}
+
+.holistic-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    display: inline-block;
+    background: rgba(0,0,0,0.1);
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 50%;
+}
+
+.holistic-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.holistic-card p {
+    color: #555;
+    font-size: 0.95rem;
+}
+
+/* Pastel Colors mimicking Candy Floss */
+.card-pink {
+    background-color: #ffe6eb;
+}
+.card-pink .holistic-icon i { color: #ff6b8b; }
+
+.card-yellow {
+    background-color: #fff9db;
+}
+.card-yellow .holistic-icon i { color: #fcc419; }
+
+.card-blue {
+    background-color: #e7f5ff;
+}
+.card-blue .holistic-icon i { color: #339af0; }
+
+.card-green {
+    background-color: #ebfbee;
+}
+.card-green .holistic-icon i { color: #51cf66; }
+
+/* Cartoon Animated Title Sequence */
+.animated-title span {
+    display: inline-block;
+    opacity: 0;
+    transform: scale(0.3) translateY(20px) rotate(-10deg);
+}
+
+.animated-title.animate span {
+    animation: cartoonPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes cartoonPop {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(20px) rotate(-10deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1) translateY(-10px) rotate(5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0) rotate(0);
+    }
+}
+
 .section-title {
     text-align: center;
     font-size: 2.5rem;

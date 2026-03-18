@@ -124,4 +124,25 @@ document.addEventListener('DOMContentLoaded', () => {
             ageInput.value = '';
         });
     }
+
+    // Intersection Observer for Animations (e.g. animated titles)
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                observer.unobserve(entry.target); // Optional: only animate once
+            }
+        });
+    }, observerOptions);
+
+    const animatedTitles = document.querySelectorAll('.animated-title');
+    animatedTitles.forEach(title => {
+        observer.observe(title);
+    });
 });
