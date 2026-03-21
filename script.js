@@ -173,6 +173,31 @@ document.addEventListener('DOMContentLoaded', () => {
                     timestamp: new Date().toISOString()
                 });
 
+                // --- EmailJS Integration Placeholder ---
+                const templateParams = {
+                    parentName,
+                    childName,
+                    dob,
+                    ageAsOfTargetDate,
+                    residence,
+                    contactNo,
+                    email,
+                    reason,
+                    openHouse: openHouse ? "Yes" : "No"
+                };
+                
+                // You must configure the serviceID and templateID here from your EmailJS dashboard:
+                const serviceID = "YOUR_SERVICE_ID_HERE";
+                const templateID = "YOUR_TEMPLATE_ID_HERE";
+                
+                try {
+                    await emailjs.send(serviceID, templateID, templateParams);
+                    console.log("Email notification sent via EmailJS");
+                } catch (emailErr) {
+                    console.error("Failed to send email check your EmailJS keys", emailErr);
+                }
+                // ---------------------------------------
+
                 alert('Thank you for your enquiry! We will get back to you soon.');
                 enquireForm.reset();
                 modal.classList.remove('show');
