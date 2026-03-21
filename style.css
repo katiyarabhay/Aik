@@ -321,12 +321,10 @@ header::before {
 }
 
 .hero h3.hero-subtitle {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-bottom: 2rem;
-    color: #ffffff;
+    color: #ffeb3b;
     font-weight: 700;
-    text-shadow: 0 0 10px #ffeb3b, 0 0 20px #ffeb3b, 0 0 30px #ff9800;
-    text-transform: uppercase;
 }
 
 .btn-primary {
