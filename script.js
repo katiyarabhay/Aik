@@ -187,8 +187,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
                 
                 // You must configure the serviceID and templateID here from your EmailJS dashboard:
-                const serviceID = "YOUR_SERVICE_ID_HERE";
-                const templateID = "YOUR_TEMPLATE_ID_HERE";
+                const serviceID = "service_7fma4qx";
+                const templateID = "template_vhjapz3";
                 
                 try {
                     await emailjs.send(serviceID, templateID, templateParams);
