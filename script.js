@@ -294,4 +294,53 @@ document.addEventListener('DOMContentLoaded', () => {
     animatedTitles.forEach(title => {
         observer.observe(title);
     });
+
+    // Events Carousel Logic
+    const eventsContainer = document.getElementById('eventsContainer');
+    const prevEventBtn = document.getElementById('prevEvent');
+    const nextEventBtn = document.getElementById('nextEvent');
+
+    if (eventsContainer && prevEventBtn && nextEventBtn) {
+        const getScrollAmount = () => {
+            const firstChild = eventsContainer.children[0];
+            return firstChild ? firstChild.offsetWidth + 32 : 532;
+        };
+
+        const scrollNext = () => {
+            const maxScroll = eventsContainer.scrollWidth - eventsContainer.clientWidth;
+            if (eventsContainer.scrollLeft >= maxScroll - 10) {
+                // Smoothly scroll back to the start
+                eventsContainer.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                eventsContainer.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+            }
+        };
+
+        const scrollPrev = () => {
+            eventsContainer.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+        };
+
+        let autoScrollInterval = setInterval(scrollNext, 3000);
+
+        const resetInterval = () => {
+            clearInterval(autoScrollInterval);
+            autoScrollInterval = setInterval(scrollNext, 3000);
+        };
+
+        prevEventBtn.addEventListener('click', () => {
+            scrollPrev();
+            resetInterval();
+        });
+
+        nextEventBtn.addEventListener('click', () => {
+            scrollNext();
+            resetInterval();
+        });
+
+        const carouselWrapper = document.querySelector('.carousel-wrapper');
+        if (carouselWrapper) {
+            carouselWrapper.addEventListener('mouseenter', () => clearInterval(autoScrollInterval));
+            carouselWrapper.addEventListener('mouseleave', resetInterval);
+        }
+    }
 });

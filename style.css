@@ -598,17 +598,70 @@ header::before {
     color: #777;
 }
 
-/* Events */
+/* Events Carousel */
+.carousel-wrapper {
+    position: relative;
+    padding: 0 50px; /* Space for buttons on sides */
+    max-width: 100%;
+}
+
 .events-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
     gap: 2rem;
+    padding-bottom: 2rem; /* Give room for shadow */
+    /* Hide scrollbar */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.events-container::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--neon-blue);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(77, 77, 255, 0.4);
+    transition: all 0.3s ease;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-btn:hover {
+    background-color: #3333ff;
+    box-shadow: 0 6px 20px rgba(77, 77, 255, 0.6);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn.prev-btn {
+    left: 0;
+}
+
+.carousel-btn.next-btn {
+    right: 0;
 }
 
 .event-item {
+    flex: 0 0 500px;
+    max-width: 100%;
+    min-height: 450px; /* Assuming 450px was intended over 45px to fit content */
+    scroll-snap-align: center;
     display: flex;
     align-items: center;
-    padding: 1.5rem;
+    padding: 2.5rem; /* Increased padding */
     border-radius: 40px 10px 40px 10px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
     transition: transform 0.3s ease, border-radius 0.3s ease;
@@ -648,7 +701,11 @@ header::before {
 }
 
 .achievement-box {
-    padding: 2.5rem;
+    flex: 0 0 500px;
+    max-width: 100%;
+    min-height: 450px;
+    scroll-snap-align: center;
+    padding: 3.5rem; /* Increased padding */
     border-radius: 40px 10px 40px 10px;
     color: #333;
     display: flex;
