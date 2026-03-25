@@ -63,6 +63,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Modal Logic
     const modal = document.getElementById('enquireModal');
+    const feedbackModal = document.getElementById('feedbackModal');
+    const openFeedbackBtn = document.getElementById('openFeedbackModal');
+    const closeFeedbackBtn = document.querySelector('.close-feedback-btn');
+    const feedbackForm = document.getElementById('feedbackForm');
     const openBtn = document.getElementById('openEnquireModal');
     const closeBtn = document.querySelector('.close-btn');
     const dobInput = document.getElementById('dob');
@@ -85,15 +89,21 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        closeBtn.addEventListener('click', () => {
-            modal.classList.remove('show');
-            setTimeout(() => modal.style.display = 'none', 300);
-        });
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                modal.classList.remove('show');
+                setTimeout(() => modal.style.display = 'none', 300);
+            });
+        }
 
         window.addEventListener('click', (e) => {
             if (e.target === modal) {
                 modal.classList.remove('show');
                 setTimeout(() => modal.style.display = 'none', 300);
+            }
+            if (e.target === feedbackModal) {
+                feedbackModal.classList.remove('show');
+                setTimeout(() => feedbackModal.style.display = 'none', 300);
             }
         });
 
@@ -104,6 +114,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => modal.classList.add('show'), 10);
             }
         }, 1500);
+    }
+
+    if (openFeedbackBtn && feedbackModal) {
+        openFeedbackBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            feedbackModal.style.display = 'flex';
+            setTimeout(() => feedbackModal.classList.add('show'), 10);
+        });
+
+        if (closeFeedbackBtn) {
+            closeFeedbackBtn.addEventListener('click', () => {
+                feedbackModal.classList.remove('show');
+                setTimeout(() => feedbackModal.style.display = 'none', 300);
+            });
+        }
     }
 
     if (dobInput && ageInput) {
@@ -136,6 +161,41 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             } else {
                 ageInput.value = '';
+            }
+        });
+    }
+
+    if (feedbackForm) {
+        feedbackForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('feedbackName').value;
+            const email = document.getElementById('feedbackEmail').value;
+            const message = document.getElementById('feedbackMessage').value;
+
+            const submitBtn = feedbackForm.querySelector('.btn-submit');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+
+            try {
+                await push(ref(db, "feedback"), {
+                    name,
+                    email,
+                    message,
+                    timestamp: new Date().toISOString()
+                });
+
+                alert('Thank you for your feedback!');
+                feedbackForm.reset();
+                feedbackModal.classList.remove('show');
+                setTimeout(() => feedbackModal.style.display = 'none', 300);
+            } catch (error) {
+                console.error("Error adding feedback: ", error);
+                alert("There was an error submitting your feedback. Please try again.");
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
             }
         });
     }
