@@ -35,6 +35,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Show Founder's Message on click
+    const foundersMessageLink = document.querySelector('a[href="#founders-message"]');
+    const foundersMessageSection = document.getElementById('founders-message');
+
+    if (foundersMessageLink && foundersMessageSection) {
+        foundersMessageLink.addEventListener('click', () => {
+            foundersMessageSection.style.display = 'block';
+        });
+    }
+
+    // Show Our Vision on click
+    const ourVisionLink = document.querySelector('a[href="#our-vision"]');
+    const ourVisionSection = document.getElementById('our-vision');
+
+    if (ourVisionLink && ourVisionSection) {
+        ourVisionLink.addEventListener('click', () => {
+            ourVisionSection.style.display = 'block';
+        });
+    }
+
     // Smooth Scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
