@@ -363,4 +363,69 @@ document.addEventListener('DOMContentLoaded', () => {
             carouselWrapper.addEventListener('mouseleave', resetInterval);
         }
     }
+
+    // Lightbox Logic for Gallery
+    const galleryItems = document.querySelectorAll('.gallery-grid img');
+    if (galleryItems.length > 0) {
+        const lightbox = document.createElement('div');
+        lightbox.className = 'lightbox';
+        lightbox.innerHTML = `
+            <span class="lightbox-close">&times;</span>
+            <img class="lightbox-content" src="">
+            <a class="lightbox-prev" aria-label="Previous image">&#10094;</a>
+            <a class="lightbox-next" aria-label="Next image">&#10095;</a>
+        `;
+        document.body.appendChild(lightbox);
+
+        const lightboxImg = lightbox.querySelector('.lightbox-content');
+        const closeBtn = lightbox.querySelector('.lightbox-close');
+        const prevBtn = lightbox.querySelector('.lightbox-prev');
+        const nextBtn = lightbox.querySelector('.lightbox-next');
+
+        let currentIndex = 0;
+
+        function showImage(index) {
+            if (index >= galleryItems.length) currentIndex = 0;
+            else if (index < 0) currentIndex = galleryItems.length - 1;
+            else currentIndex = index;
+
+            lightboxImg.src = galleryItems[currentIndex].src;
+        }
+
+        galleryItems.forEach((img, index) => {
+            img.addEventListener('click', function() {
+                lightbox.style.display = "flex";
+                showImage(index);
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            lightbox.style.display = "none";
+        });
+
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            showImage(currentIndex - 1);
+        });
+
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            showImage(currentIndex + 1);
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target === lightboxImg) {
+                // Clicking outside the image or on the image could optionally do nothing/close.
+                if(e.target === lightbox) lightbox.style.display = "none";
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.style.display === "flex") {
+                if (e.key === "Escape") lightbox.style.display = "none";
+                if (e.key === "ArrowLeft") showImage(currentIndex - 1);
+                if (e.key === "ArrowRight") showImage(currentIndex + 1);
+            }
+        });
+    }
 });
