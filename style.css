@@ -277,7 +277,7 @@ header::before {
 }
 
 .welcome-text {
-    color: #ffffff;
+    color: #00BFFF;
 }
 
 /* keyframes for fade-in on page load */
@@ -599,6 +599,10 @@ header::before {
 }
 
 /* Events Carousel */
+#events .container {
+    max-width: 1400px;
+}
+
 .carousel-wrapper {
     position: relative;
     padding: 0 50px; /* Space for buttons on sides */
@@ -655,7 +659,7 @@ header::before {
 }
 
 .event-item {
-    flex: 0 0 500px;
+    flex: 0 0 650px;
     max-width: 100%;
     min-height: 450px; /* Assuming 450px was intended over 45px to fit content */
     scroll-snap-align: center;
@@ -701,7 +705,7 @@ header::before {
 }
 
 .achievement-box {
-    flex: 0 0 500px;
+    flex: 0 0 650px;
     max-width: 100%;
     min-height: 450px;
     scroll-snap-align: center;
